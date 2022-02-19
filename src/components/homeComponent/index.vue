@@ -1,5 +1,5 @@
 <template>
-  <h1>This is home</h1>
+  <router-link to="/list">This is home</router-link>
 </template>
 
 <script>
