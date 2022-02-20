@@ -3,12 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import fastclick from 'fastclick'
+import fastClick from 'fastclick'
 import 'styles/reset.css'
 import 'styles/border.css'
 
+import {Calendar, Popup} from 'vant'
+import 'vant/lib/button/style'
+import 'vant/lib/calendar/style'
+
 Vue.config.productionTip = false
-fastclick.attach(document.body)
+fastClick.attach(document.body)
+
+Vue.use(Calendar)
+Vue.use(Popup)
 
 /* eslint-disable no-new */
 new Vue({
