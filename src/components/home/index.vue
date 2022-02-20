@@ -1,6 +1,6 @@
 <template>
   <div>
-    <punch-calendar></punch-calendar>
+    <punch-calendar :p-name="name"></punch-calendar>
     <punch-operation></punch-operation>
     <punch-detail></punch-detail>
   </div>
@@ -14,6 +14,11 @@ import PunchDetail from './punchdDetail'
 
 export default {
   name: 'Home',
+  data () {
+    return {
+      name: 'oysq'
+    }
+  },
   components: {
     PunchCalendar, PunchOperation, PunchDetail
   }

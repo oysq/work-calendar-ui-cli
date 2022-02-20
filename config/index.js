@@ -8,9 +8,17 @@ module.exports = {
   dev: {
 
     // Paths
+    // 由 webpack-dev-server 提供
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/calendar-ms': {
+        target: 'http://localhost:9092',
+        pathRewrite: {
+          '^/calendar-ms': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
