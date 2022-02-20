@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import homeComponent from '@/components/homeComponent'
-import listComponent from '@/components/listComponent'
+import home from '@/components/home'
+import report from '@/components/report'
 
 Vue.use(Router)
 
@@ -10,12 +10,12 @@ export default new Router({
     {
       path: '/',
       name: 'homeRoute',
-      component: homeComponent
+      component: home
     },
     {
-      path: '/list',
-      name: 'listRoute',
-      component: listComponent
+      path: '/report',
+      name: 'reportRoute',
+      component: report
     }
   ]
 })
