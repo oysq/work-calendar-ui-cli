@@ -1,7 +1,7 @@
 <template>
   <div>
-    <punch-calendar :p-name="name"></punch-calendar>
-    <punch-operation></punch-operation>
+    <punch-calendar :p-name="name" @numAdd="handlerNumAdd"></punch-calendar>
+    <punch-operation :num="resNum"></punch-operation>
     <punch-detail></punch-detail>
   </div>
 </template>
@@ -14,13 +14,20 @@ import PunchDetail from './punchdDetail'
 
 export default {
   name: 'Home',
-  data () {
-    return {
-      name: 'oysq'
-    }
-  },
   components: {
     PunchCalendar, PunchOperation, PunchDetail
+  },
+  data () {
+    return {
+      name: 'oysq',
+      resNum: 0
+    }
+  },
+  methods: {
+    handlerNumAdd (num) {
+      console.log(num)
+      this.resNum = num
+    }
   }
 }
 </script>

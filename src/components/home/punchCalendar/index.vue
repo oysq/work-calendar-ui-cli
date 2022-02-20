@@ -1,14 +1,18 @@
 <template>
   <div>
 
-    <div>{{name}}</div>
-
     <van-calendar
       title="日历"
       :poppable="false"
       :show-confirm="false"
       :style="{ height: '500px' }"
     />
+
+    <router-link to="/report">
+      <div>{{name}}</div>
+    </router-link>
+
+    <div @click="handlerClick">数字加1</div>
 
   </div>
 </template>
@@ -21,11 +25,12 @@ export default {
   },
   data () {
     return {
-      name: this.pName
+      name: this.pName,
+      num: 0
     }
   },
   mounted () {
-    this.test()
+    // this.test()
   },
   methods: {
     test () {
@@ -37,8 +42,11 @@ export default {
         console.log(res)
       }).catch(function (error) {
         console.log(error)
-        alert(error)
       })
+    },
+    handlerClick () {
+      this.num++
+      this.$emit('numAdd', this.num)
     }
   }
 }

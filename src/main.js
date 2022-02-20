@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import fastClick from 'fastclick'
 import axios from 'axios'
-import {Calendar, Popup} from 'vant'
+import {Calendar, Popup, Divider} from 'vant'
 // css
 import 'styles/reset.css'
 import 'styles/border.css'
@@ -25,6 +25,7 @@ Vue.prototype.$axios.defaults.baseURL = 'http://localhost:8080/calendar-ms'
 // vant
 Vue.use(Calendar)
 Vue.use(Popup)
+Vue.use(Divider)
 
 /* eslint-disable no-new */
 new Vue({
