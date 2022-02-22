@@ -17,7 +17,7 @@ export default {
     }
   },
   watch: {
-    numShow () {
+    num () {
       console.log(this.num)
       this.resNum = this.num
     }

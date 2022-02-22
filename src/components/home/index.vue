@@ -1,7 +1,9 @@
 <template>
   <div>
     <punch-calendar :p-name="name" @numAdd="handlerNumAdd"></punch-calendar>
+    <br />
     <punch-operation :num="resNum"></punch-operation>
+    <br />
     <punch-detail></punch-detail>
   </div>
 </template>
@@ -19,13 +21,12 @@ export default {
   },
   data () {
     return {
-      name: 'oysq',
+      name: '跳转',
       resNum: 0
     }
   },
   methods: {
     handlerNumAdd (num) {
-      console.log(num)
       this.resNum = num
     }
   }

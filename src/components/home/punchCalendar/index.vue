@@ -1,6 +1,8 @@
 <template>
   <div>
 
+    <h1>PunchCalendar</h1>
+
     <van-calendar
       title="日历"
       :poppable="false"
