@@ -67,7 +67,8 @@ export default {
       this.addMsgToState('快')
     },
     routerClick () {
-      this.$router.push('/report')
+      // 注意，这里不是 $route
+      this.$router.push('/report/1001')
     }
   }
 }

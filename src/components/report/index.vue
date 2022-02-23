@@ -1,5 +1,9 @@
 <template>
-  <h1>This is report</h1>
+  <div>
+    <h1>This is report</h1>
+    <!-- 注意，这里不是 $router -->
+    <h1>id -> {{this.$route.params.id}}</h1>
+  </div>
 </template>
 
 <script>

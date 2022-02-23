@@ -13,7 +13,7 @@ export default new Router({
       component: home
     },
     {
-      path: '/report',
+      path: '/report/:id',
       name: 'reportRoute',
       component: report
     }
