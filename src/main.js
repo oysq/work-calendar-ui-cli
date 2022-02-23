@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import fastClick from 'fastclick'
 import axios from 'axios'
+import store from './store'
 import {Calendar, Popup, Divider} from 'vant'
 // css
 import 'styles/reset.css'
@@ -31,6 +32,7 @@ Vue.use(Divider)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

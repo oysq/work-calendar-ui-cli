@@ -21,7 +21,7 @@ export default {
   },
   data () {
     return {
-      name: '跳转',
+      name: '标签式跳转',
       resNum: 0
     }
   },

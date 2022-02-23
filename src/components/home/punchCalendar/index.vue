@@ -14,12 +14,20 @@
       <div>{{name}}</div>
     </router-link>
 
-    <div @click="handlerClick">数字加1</div>
+    <div @click="handlerNumClick">数字加1</div>
+
+    <div @click="handlerMsgClickDispatch">消息异步加1</div>
+    <div @click="handlerMsgClickCommit">消息直接加1</div>
+
+    <div @click="routerClick">编程式跳转</div>
 
   </div>
 </template>
 
 <script>
+
+import {mapActions, mapMutations} from 'vuex'
+
 export default {
   name: 'PunchCalendar',
   props: {
@@ -46,9 +54,20 @@ export default {
         console.log(error)
       })
     },
-    handlerClick () {
+    handlerNumClick () {
       this.num++
       this.$emit('numAdd', this.num)
+    },
+    ...mapActions(['addMsg']),
+    ...mapMutations(['addMsgToState']),
+    handlerMsgClickDispatch () {
+      this.addMsg('新')
+    },
+    handlerMsgClickCommit () {
+      this.addMsgToState('快')
+    },
+    routerClick () {
+      this.$router.push('/report')
     }
   }
 }
