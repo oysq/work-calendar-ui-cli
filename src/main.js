@@ -20,8 +20,6 @@ fastClick.attach(document.body)
 
 // axios
 Vue.prototype.$axios = axios
-// Vue.prototype.$axios.defaults.baseURL = 'http://excel.oysq.cloud/calendar-ms'
-Vue.prototype.$axios.defaults.baseURL = 'http://localhost:8080/calendar-ms'
 
 // vant
 Vue.use(Calendar)

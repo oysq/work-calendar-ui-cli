@@ -10,7 +10,7 @@
       :style="{ height: '500px' }"
     />
 
-    <router-link to="/report">
+    <router-link to="/report/1001">
       <div>{{name}}</div>
     </router-link>
 
@@ -40,11 +40,11 @@ export default {
     }
   },
   mounted () {
-    // this.test()
+    this.test()
   },
   methods: {
     test () {
-      this.$axios.post('/user/checkToken',
+      this.$axios.post('/calendar-ms/user/checkToken',
         {
           token: ''
         }
@@ -68,7 +68,7 @@ export default {
     },
     routerClick () {
       // 注意，这里不是 $route
-      this.$router.push('/report/1001')
+      this.$router.push('/report/1002')
     }
   }
 }

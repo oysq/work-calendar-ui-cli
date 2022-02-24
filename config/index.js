@@ -12,11 +12,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      // '/calendar-ms': {
+      //   target: 'http://localhost:9092',
+      //   pathRewrite: {
+      //     '^/calendar-ms': ''
+      //   }
+      // },
       '/calendar-ms': {
-        target: 'http://localhost:9092',
-        pathRewrite: {
-          '^/calendar-ms': ''
-        }
+        target: 'hhttp://excel.oysq.cloud'
       }
     },
 
@@ -58,7 +61,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/work-calendar-ui-cli',
 
     /**
      * Source Maps
