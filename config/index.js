@@ -12,14 +12,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      // '/calendar-ms': {
-      //   target: 'http://localhost:9092',
-      //   pathRewrite: {
-      //     '^/calendar-ms': ''
-      //   }
-      // },
       '/calendar-ms': {
-        target: 'hhttp://excel.oysq.cloud'
+        target: 'http://localhost:9092',
+        pathRewrite: {
+          '^/calendar-ms': ''
+        }
       }
     },
 
