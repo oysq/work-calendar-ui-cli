@@ -13,10 +13,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/calendar-ms': {
-        target: 'http://localhost:9092',
-        pathRewrite: {
-          '^/calendar-ms': ''
-        }
+        target: 'http://localhost:80',
+        // pathRewrite: {
+        //   '^/calendar-ms': ''
+        // }
       }
     },
 
