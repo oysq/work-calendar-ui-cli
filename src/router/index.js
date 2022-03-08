@@ -16,6 +16,11 @@ export default new Router({
       path: '/report/:id',
       name: 'reportRoute',
       component: report
+    },
+    {
+      path: '/calendar',
+      name: 'calendarRoute',
+      component: () => import('@/components/calendar')
     }
   ]
 })

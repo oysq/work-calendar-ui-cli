@@ -6,11 +6,13 @@ import router from './router'
 import fastClick from 'fastclick'
 import axios from 'axios'
 import store from './store'
-import {Calendar, Popup, Divider} from 'vant'
+
 // css
 import 'styles/reset.css'
 import 'styles/border.css'
-import 'vant/lib/button/style'
+
+// vant
+import { Calendar, Popup, Divider, Field, Cell, CellGroup, Grid, GridItem } from 'vant'
 import 'vant/lib/calendar/style'
 
 Vue.config.productionTip = false
@@ -22,9 +24,7 @@ fastClick.attach(document.body)
 Vue.prototype.$axios = axios
 
 // vant
-Vue.use(Calendar)
-Vue.use(Popup)
-Vue.use(Divider)
+Vue.use(Calendar, Popup, Divider, Field, Cell, CellGroup, Grid, GridItem)
 
 /* eslint-disable no-new */
 new Vue({
