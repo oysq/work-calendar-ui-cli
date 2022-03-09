@@ -14,6 +14,7 @@ import 'styles/border.css'
 // vant
 import { Calendar, Popup, Divider, Field, Cell, CellGroup, Grid, GridItem } from 'vant'
 import 'vant/lib/calendar/style'
+import 'vant/lib/divider/style'
 
 Vue.config.productionTip = false
 
@@ -24,7 +25,14 @@ fastClick.attach(document.body)
 Vue.prototype.$axios = axios
 
 // vant
-Vue.use(Calendar, Popup, Divider, Field, Cell, CellGroup, Grid, GridItem)
+Vue.use(Calendar)
+Vue.use(Divider)
+Vue.use(Popup)
+Vue.use(Field)
+Vue.use(Cell)
+Vue.use(CellGroup)
+Vue.use(Grid)
+Vue.use(GridItem)
 
 /* eslint-disable no-new */
 new Vue({
