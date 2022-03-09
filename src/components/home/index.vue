@@ -1,9 +1,7 @@
 <template>
   <div>
-    <punch-calendar :p-name="name" @numAdd="handlerNumAdd"></punch-calendar>
-    <br />
-    <punch-operation :num="resNum"></punch-operation>
-    <br />
+    <punch-calendar></punch-calendar>
+    <punch-operation></punch-operation>
     <punch-detail></punch-detail>
   </div>
 </template>
@@ -12,27 +10,14 @@
 
 import PunchCalendar from './punchCalendar'
 import PunchOperation from './punchOperation'
-import PunchDetail from './punchdDetail'
+import PunchDetail from './punchDetail'
 
 export default {
   name: 'Home',
-  components: {
-    PunchCalendar, PunchOperation, PunchDetail
-  },
-  data () {
-    return {
-      name: '标签式跳转',
-      resNum: 0
-    }
-  },
-  methods: {
-    handlerNumAdd (num) {
-      this.resNum = num
-    }
-  }
+  components: {PunchDetail, PunchOperation, PunchCalendar}
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this punchCalendar only -->
 <style scoped>
+
 </style>

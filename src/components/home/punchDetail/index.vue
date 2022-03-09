@@ -1,12 +1,12 @@
 <template>
   <div>
-    首页
+    详情
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Calendar'
+  name: 'PunchDetail'
 }
 </script>
 

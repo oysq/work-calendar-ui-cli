@@ -15,7 +15,7 @@ module.exports = {
       '/calendar-ms': {
         target: 'http://localhost:80',
         // pathRewrite: {
-        //   '^/calendar-ms': ''
+        //   '^/home-ms': ''
         // }
       }
     },
@@ -58,7 +58,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/work-calendar-ui-cli',
+    assetsPublicPath: '/work-home-ui-cli',
 
     /**
      * Source Maps
@@ -76,8 +76,8 @@ module.exports = {
     productionGzipExtensions: ['js', 'css'],
 
     // Run the build command with an extra argument to
-    // View the bundle analyzer report after build finishes:
-    // `npm run build --report`
+    // View the bundle analyzer reportBack after build finishes:
+    // `npm run build --reportBack`
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
   }

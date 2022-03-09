@@ -12,6 +12,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this punchCalendar only -->
+<!-- Add "scoped" attribute to limit CSS to this punchCalendarBack only -->
 <style scoped>
 </style>
