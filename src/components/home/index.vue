@@ -41,7 +41,7 @@ export default {
     // 获取打卡数据
     queryCalendarList (date) {
       this.showLoading()
-      this.$axios.post('/punchRecord/selectRecord',
+      this.$axios.post('/calendar-ms/punchRecord/selectRecord',
         {},
         {
           headers: {

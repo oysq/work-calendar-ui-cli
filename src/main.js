@@ -12,7 +12,7 @@ import 'styles/reset.css'
 import 'styles/border.css'
 
 // vant
-import { Calendar, Popup, Divider, Field, Cell, CellGroup, Grid, GridItem } from 'vant'
+import { Calendar, Popup, Divider, Field, Cell, CellGroup, Grid, GridItem, Overlay, Loading, Col, Row, Button } from 'vant'
 import 'vant/lib/calendar/style'
 import 'vant/lib/divider/style'
 
@@ -33,6 +33,11 @@ Vue.use(Cell)
 Vue.use(CellGroup)
 Vue.use(Grid)
 Vue.use(GridItem)
+Vue.use(Overlay)
+Vue.use(Loading)
+Vue.use(Col)
+Vue.use(Row)
+Vue.use(Button)
 
 /* eslint-disable no-new */
 new Vue({
