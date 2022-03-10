@@ -14,7 +14,7 @@ module.exports = {
     proxyTable: {
       '/calendar-ms': {
         // target: 'http://localhost:80',
-        target: 'http://excel.oysq.cloud',
+        // aa
         // pathRewrite: {
         //   '^/home-ms': ''
         // }
