@@ -39,7 +39,7 @@
 
 <script>
 
-import {getCookie, setCookie} from '../../utils/CookieUtil'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'Login',
@@ -63,20 +63,19 @@ export default {
     this.checkToken()
   },
   methods: {
+    ...mapGetters(['getUserToken']),
+    ...mapActions(['setUser']),
     /**
      * 用户认证相关
      */
     checkToken () {
       this.showLoading()
-      this.user.token = window.localStorage.getItem('authToken')
+      this.user.token = this.getUserToken()
       if (!this.user.token) {
-        this.user.token = getCookie('authToken')
-        if (!this.user.token) {
-          this.hideLoading()
-          this.$toast.fail('需要登录一下哦')
-          this.showAuthPopup = true
-          return
-        }
+        this.hideLoading()
+        this.$toast.fail('需要登录一下哦')
+        this.showAuthPopup = true
+        return
       }
       this.$axios.post('/calendar-ms/user/checkToken',
         {
@@ -88,8 +87,10 @@ export default {
           this.user.id = res.data.body.userId
           this.user.postSalary = res.data.body.postSalary
           this.$notify({type: 'success', message: '身份验证通过，欢迎 ' + res.data.body.userName})
-          // TODO 进入home
-          console.log('进入home')
+          // 放入state
+          this.setUser(this.user)
+          // 进入home
+          this.$router.push('/home')
         } else {
           this.$toast.fail('有点久了哦，重新登录一下昂')
           this.showAuthPopup = true
@@ -164,14 +165,14 @@ export default {
           this.user.token = res.data.body.token
           this.user.postSalary = res.data.body.postSalary
 
-          // 存储
-          window.localStorage.setItem('authToken', res.data.body.token)
-          setCookie('authToken', res.data.body.token, 7)
-
           this.showAuthPopup = false
           this.$notify({type: 'success', message: '身份验证通过，欢迎 ' + res.data.body.userName})
-          // 加载数据
-          console.log('进入home页面')
+
+          // 放入state
+          this.setUser(this.user)
+
+          // 进入home
+          this.$router.push('/home')
         } else {
           this.$toast.fail(res.data.msg)
         }

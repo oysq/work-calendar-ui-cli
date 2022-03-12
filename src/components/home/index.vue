@@ -1,6 +1,6 @@
 <template>
   <div>
-    <punch-calendar></punch-calendar>
+    <punch-calendar :record-list="punchRecord"></punch-calendar>
     <div>
       <!-- 分割线 -->
       <van-divider :style="{'margin':'0px'}"/>
@@ -22,6 +22,7 @@
 
 <script>
 
+import {mapGetters} from 'vuex'
 import PunchCalendar from './punchCalendar'
 import PunchOperation from './punchOperation'
 import PunchDetail from './punchDetail'
@@ -37,7 +38,11 @@ export default {
       punchRecord: {}
     }
   },
+  created () {
+    this.queryCalendarList(new Date())
+  },
   methods: {
+    ...mapGetters(['getUserName', 'getUserToken']),
     // 获取打卡数据
     queryCalendarList (date) {
       this.showLoading()
@@ -45,23 +50,20 @@ export default {
         {},
         {
           headers: {
-            'C-TOKEN': this.user.token
+            'C-TOKEN': this.getUserToken()
           }
         }
       ).then(res => {
         this.hideLoading()
         if (res.data.status === 1) {
-          // TODO 遍历转为0-31的数组
+          // 遍历转为0-31的数组
+          let _list = {}
           for (const index in res.data.body) {
             const item = res.data.body[index]
-            this.punchRecord[item.punchDate] = item
+            _list[item.punchDate] = item
           }
-          console.log('=== punchRecord ===')
-          console.log(this.punchRecord)
-          // 开始加载渲染数据
-          this.calendar.show = true
-          // 首次舒心时渲染一次
-          this.formatterDetail(new Date())
+          this.punchRecord = _list
+          console.log('this.punchRecord', this.punchRecord)
         } else {
           this.$toast.fail(res.data.msg)
         }

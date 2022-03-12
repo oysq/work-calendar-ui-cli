@@ -1,5 +1,5 @@
 <template>
-  <div v-if="calendar.show">
+  <div>
     <van-calendar
       :show-title="false"
       :poppable="false"
@@ -27,8 +27,12 @@ import {formatDate} from '@/utils/DateUtil'
 
 export default {
   name: 'PunchCalendar',
+  props: [
+    'recordList'
+  ],
   data () {
     return {
+      punchRecord: this.recordList,
       calendar: {
         show: false,
         selectDate: new Date(),
@@ -36,8 +40,12 @@ export default {
       }
     }
   },
+  watch: {
+    recordList () {
+      this.punchRecord = this.recordList
+    }
+  },
   methods: {
-
     // 查找结果集的数据
     findRecord (day) {
       const formatDay = formatDate(day, '/')
@@ -55,6 +63,16 @@ export default {
         }
       }
       return day
+    },
+    // 某个月进入可视区域
+    monthShow (obj) {
+      console.log('进入可视区域: ' + formatDate(obj.date, '-'))
+    },
+    // 点击某个日期
+    selectCalendar (clickDate) {
+      this.calendar.selectDate = clickDate
+      console.log('点击日期: ' + formatDate(clickDate, '-'))
+      // TODO 触发渲染详情
     }
   }
 }

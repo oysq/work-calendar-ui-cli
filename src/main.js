@@ -12,10 +12,11 @@ import 'styles/reset.css'
 import 'styles/border.css'
 
 // vant
-import { Calendar, Popup, Divider, Field, Cell, CellGroup, Grid, GridItem, Overlay, Loading, Col, Row, Button } from 'vant'
+import { Calendar, Popup, Divider, Field, Cell, CellGroup, Grid, GridItem, Overlay, Loading, Col, Row, Button, Notify } from 'vant'
 import 'vant/lib/calendar/style'
 import 'vant/lib/divider/style'
 import 'vant/lib/field/style'
+import 'vant/lib/notify/style'
 
 Vue.config.productionTip = false
 
@@ -39,6 +40,7 @@ Vue.use(Col)
 Vue.use(Row)
 Vue.use(Button)
 Vue.use(Field)
+Vue.use(Notify)
 
 /* eslint-disable no-new */
 new Vue({
