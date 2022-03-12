@@ -10,7 +10,7 @@
       <!-- 分割线 -->
       <van-divider :style="{'margin':'0px'}"/>
     </div>
-    <punch-detail></punch-detail>
+    <punch-detail :record-list="punchRecord"></punch-detail>
     <!-- 加载动画 -->
     <van-overlay :show="loadingStatus">
       <div class="loading-wrapper">

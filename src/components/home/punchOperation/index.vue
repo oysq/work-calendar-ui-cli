@@ -78,7 +78,6 @@
 
 import {formatDate} from '@/utils/DateUtil'
 import {mapGetters} from 'vuex'
-// import morningImg from 'img/morning.png'
 
 export default {
   name: 'PunchOperation',
@@ -87,7 +86,6 @@ export default {
   ],
   data () {
     return {
-      // morningImg: morningImg,
       punchRecord: this.recordList,
       // 打卡弹窗
       punchPopup: {
@@ -195,7 +193,11 @@ export default {
 
       // 早上 08:30 之前的算前一天
       let punchDate = new Date(this.getOperationSelectDate())
-      if (this.punchPopup.timeConfirm.split(':')[0] <= '08' && this.punchPopup.timeConfirm.split(':')[1] < '30') {
+      if (
+        this.punchPopup.timeConfirm.split(':')[0] < '08' ||
+        (this.punchPopup.timeConfirm.split(':')[0] === '08' && this.punchPopup.timeConfirm.split(':')[1] < '30')
+      ) {
+        // 天数减一
         punchDate.setDate(punchDate.getDate() - 1)
       }
 

@@ -24,7 +24,7 @@
 <script>
 
 import {formatDate} from '@/utils/DateUtil'
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
   name: 'PunchCalendar',
@@ -36,7 +36,7 @@ export default {
       punchRecord: this.recordList,
       calendar: {
         show: false,
-        selectDate: new Date(),
+        selectDate: this.getOperationSelectDate(),
         minDate: new Date('2021/06/01')
       }
     }
@@ -48,6 +48,7 @@ export default {
   },
   methods: {
     ...mapActions(['setOperationSelectDate']),
+    ...mapGetters(['getOperationSelectDate']),
     // 查找结果集的数据
     findRecord (day) {
       const formatDay = formatDate(day, '/')

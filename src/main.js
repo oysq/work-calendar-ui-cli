@@ -13,7 +13,7 @@ import 'styles/border.css'
 
 // vant
 import { Calendar, Popup, Divider, Field, Cell, CellGroup, Grid, GridItem, Overlay,
-  Loading, Col, Row, Button, Notify, Image as VanImage, Dialog, ActionSheet, DatetimePicker, Picker } from 'vant'
+  Loading, Col, Row, Button, Notify, Image as VanImage, Dialog, ActionSheet, DatetimePicker, Picker, Step, Steps } from 'vant'
 import 'vant/lib/calendar/style'
 import 'vant/lib/popup/style'
 import 'vant/lib/divider/style'
@@ -33,6 +33,8 @@ import 'vant/lib/dialog/style'
 import 'vant/lib/action-sheet/style'
 import 'vant/lib/datetime-picker/style'
 import 'vant/lib/picker/style'
+import 'vant/lib/step/style'
+import 'vant/lib/steps/style'
 
 Vue.config.productionTip = false
 
@@ -62,6 +64,8 @@ Vue.use(Dialog)
 Vue.use(ActionSheet)
 Vue.use(DatetimePicker)
 Vue.use(Picker)
+Vue.use(Step)
+Vue.use(Steps)
 
 /* eslint-disable no-new */
 new Vue({
