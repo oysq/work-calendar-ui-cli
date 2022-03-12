@@ -7,5 +7,8 @@ export default {
   },
   getUserToken (state) {
     return state.user.token
+  },
+  getOperationSelectDate (state) {
+    return state.operation.selectDate
   }
 }

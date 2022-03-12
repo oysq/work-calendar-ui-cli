@@ -24,6 +24,7 @@
 <script>
 
 import {formatDate} from '@/utils/DateUtil'
+import {mapActions} from 'vuex'
 
 export default {
   name: 'PunchCalendar',
@@ -46,6 +47,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['setOperationSelectDate']),
     // 查找结果集的数据
     findRecord (day) {
       const formatDay = formatDate(day, '/')
@@ -64,15 +66,16 @@ export default {
       }
       return day
     },
-    // 某个月进入可视区域
-    monthShow (obj) {
-      console.log('进入可视区域: ' + formatDate(obj.date, '-'))
-    },
     // 点击某个日期
     selectCalendar (clickDate) {
       this.calendar.selectDate = clickDate
       console.log('点击日期: ' + formatDate(clickDate, '-'))
-      // TODO 触发渲染详情
+      // 更新选中的时间
+      this.setOperationSelectDate(clickDate)
+    },
+    // 某个月进入可视区域
+    monthShow (obj) {
+      // console.log('进入可视区域: ' + formatDate(obj.date, '-'))
     }
   }
 }

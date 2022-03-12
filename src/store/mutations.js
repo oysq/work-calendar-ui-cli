@@ -14,5 +14,8 @@ export default {
       localStorage.authToken = user.token
       setCookie('authToken', user.token, 7)
     } catch (e) {}
+  },
+  setOperationSelectDateToState (state, selectDate) {
+    state.operation.selectDate = selectDate
   }
 }

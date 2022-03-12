@@ -4,5 +4,8 @@ export default {
   },
   setUser (ctx, user) {
     ctx.commit('setUserToState', user)
+  },
+  setOperationSelectDate (ctx, selectDate) {
+    ctx.commit('setOperationSelectDateToState', selectDate)
   }
 }
