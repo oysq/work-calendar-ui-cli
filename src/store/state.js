@@ -12,6 +12,7 @@ try {
 
 // 用户信息
 let user = {
+  available: false,
   name: '',
   password: '',
   id: '',

@@ -51,6 +51,7 @@ export default {
       showAuthPopup: false,
       // 用户信息
       user: {
+        available: false,
         name: '',
         password: '',
         id: '',
@@ -84,6 +85,7 @@ export default {
       ).then(res => {
         this.hideLoading()
         if (res.data.status === 1) {
+          this.user.available = true
           this.user.id = res.data.body.userId
           this.user.postSalary = res.data.body.postSalary
           this.$notify({type: 'success', message: '身份验证通过，欢迎 ' + res.data.body.userName})
@@ -161,6 +163,7 @@ export default {
         }
       ).then(res => {
         if (res.data.status === 1) {
+          this.user.available = true
           this.user.id = res.data.body.userId
           this.user.token = res.data.body.token
           this.user.postSalary = res.data.body.postSalary

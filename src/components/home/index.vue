@@ -5,7 +5,7 @@
       <!-- 分割线 -->
       <van-divider :style="{'margin':'0px'}"/>
     </div>
-    <punch-operation></punch-operation>
+    <punch-operation :record-list="punchRecord"></punch-operation>
     <div>
       <!-- 分割线 -->
       <van-divider :style="{'margin':'0px'}"/>
@@ -38,11 +38,27 @@ export default {
       punchRecord: {}
     }
   },
+  computed: {
+    isAvailable () {
+      if (!this.getUserAvailable()) {
+        this.gotoLogin()
+      }
+      return this.getUserAvailable()
+    }
+  },
   created () {
-    this.queryCalendarList(new Date())
+    // this.isAvailable 一定要用到，才会触发监听，并跳转
+    if (this.isAvailable) {
+      this.queryCalendarList(new Date())
+    }
   },
   methods: {
-    ...mapGetters(['getUserName', 'getUserToken']),
+    ...mapGetters(['getUserAvailable', 'getUserName', 'getUserToken']),
+    // 前往登录页
+    gotoLogin () {
+      console.log('前往登录页')
+      this.$router.push('/')
+    },
     // 获取打卡数据
     queryCalendarList (date) {
       this.showLoading()
@@ -86,5 +102,10 @@ export default {
 </script>
 
 <style scoped>
-
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 </style>
