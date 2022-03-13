@@ -77,7 +77,7 @@
 <script>
 
 import {formatDate} from '@/utils/DateUtil'
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
   name: 'PunchOperation',
@@ -156,6 +156,7 @@ export default {
   },
   methods: {
     ...mapGetters(['getUserToken', 'getOperationSelectDate', 'getUserPostSalary']),
+    ...mapActions(['setMsg']),
     // 前往登录页
     gotoLogin () {
       console.log('前往登录页')
@@ -217,7 +218,8 @@ export default {
       ).then(res => {
         this.$emit('hideLoading')
         if (res.data.status === 1) {
-          this.$notify({type: 'success', message: '打卡成功'})
+          // this.$notify({type: 'success', message: '打卡成功'})
+          this.setMsg('打卡成功')
           setTimeout(this.gotoLogin(), 1000)
         } else {
           this.$toast.fail(res.data.msg)
@@ -299,7 +301,8 @@ export default {
       ).then(res => {
         this.$emit('hideLoading')
         if (res.data.status === 1) {
-          this.$notify({type: 'success', message: '调整成功'})
+          // this.$notify({type: 'success', message: '调整成功'})
+          this.setMsg('调整成功')
           setTimeout(this.gotoLogin(), 1000)
         } else {
           this.$toast.fail(res.data.msg)
@@ -341,7 +344,8 @@ export default {
           ).then(res => {
             this.$emit('hideLoading')
             if (res.data.status === 1) {
-              this.$notify({type: 'success', message: '调整成功'})
+              // this.$notify({type: 'success', message: '调整成功'})
+              this.setMsg('取消成功')
               setTimeout(this.gotoLogin(), 1000)
             } else {
               this.$toast.fail(res.data.msg)
@@ -395,7 +399,8 @@ export default {
       ).then(res => {
         this.$emit('hideLoading')
         if (res.data.status === 1) {
-          this.$notify({type: 'success', message: '调整成功'})
+          // this.$notify({type: 'success', message: '调整成功'})
+          this.setMsg('调整成功')
           setTimeout(this.gotoLogin(), 1000)
         } else {
           this.$toast.fail(res.data.msg)
@@ -430,7 +435,8 @@ export default {
       ).then(res => {
         this.$emit('hideLoading')
         if (res.data.status === 1) {
-          this.$notify({type: 'success', message: '设置成功'})
+          // this.$notify({type: 'success', message: '设置成功'})
+          this.setMsg('设置成功')
           setTimeout(this.gotoLogin(), 1000)
         } else {
           this.$toast.fail(res.data.msg)

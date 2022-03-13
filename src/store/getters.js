@@ -1,6 +1,6 @@
 export default {
-  doubleMsg (state) {
-    return state.msg + '*2'
+  getNotifyMsg (state) {
+    return state.notifyMsg
   },
   getUserAvailable (state) {
     return state.user.available

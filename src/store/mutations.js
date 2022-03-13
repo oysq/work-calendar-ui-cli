@@ -2,10 +2,7 @@ import {setCookie} from '../utils/CookieUtil'
 
 export default {
   addMsgToState (state, msg) {
-    state.msg = state.msg + ' ' + msg
-    try {
-      localStorage.msg = state.msg
-    } catch (e) {}
+    state.notifyMsg = msg
   },
   setUserToState (state, user) {
     state.user = user

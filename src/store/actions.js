@@ -1,5 +1,5 @@
 export default {
-  addMsg (ctx, msg) {
+  setMsg (ctx, msg) {
     ctx.commit('addMsgToState', msg)
   },
   setUser (ctx, user) {

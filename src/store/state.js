@@ -1,12 +1,7 @@
 import {getCookie} from '../utils/CookieUtil'
 
 /* ----- 消息通知 ----- */
-let localMsg = '默认消息'
-try {
-  if (localStorage.msg) {
-    localMsg = localStorage.msg
-  }
-} catch (e) {}
+let notifyMsg = ''
 
 /* ----- 用户信息 ----- */
 
@@ -36,7 +31,7 @@ let operation = {
 }
 
 export default {
-  msg: localMsg,
+  notifyMsg: notifyMsg,
   user: user,
   operation: operation
 }

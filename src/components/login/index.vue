@@ -64,7 +64,7 @@ export default {
     this.checkToken()
   },
   methods: {
-    ...mapGetters(['getUserToken']),
+    ...mapGetters(['getNotifyMsg', 'getUserToken']),
     ...mapActions(['setUser']),
     /**
      * 用户认证相关
@@ -88,7 +88,12 @@ export default {
           this.user.available = true
           this.user.id = res.data.body.userId
           this.user.postSalary = res.data.body.postSalary
-          this.$notify({type: 'success', message: '身份验证通过，欢迎 ' + res.data.body.userName})
+          // 弹窗提示
+          if (this.getNotifyMsg()) {
+            this.$notify({type: 'success', message: this.getNotifyMsg()})
+          } else {
+            this.$notify({type: 'success', message: '身份验证通过，欢迎 ' + res.data.body.userName})
+          }
           // 放入state
           this.setUser(this.user)
           // 进入home
@@ -169,7 +174,12 @@ export default {
           this.user.postSalary = res.data.body.postSalary
 
           this.showAuthPopup = false
-          this.$notify({type: 'success', message: '身份验证通过，欢迎 ' + res.data.body.userName})
+          // 弹窗提示
+          if (this.getNotifyMsg()) {
+            this.$notify({type: 'success', message: this.getNotifyMsg()})
+          } else {
+            this.$notify({type: 'success', message: '身份验证通过，欢迎 ' + res.data.body.userName})
+          }
 
           // 放入state
           this.setUser(this.user)
