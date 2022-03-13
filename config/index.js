@@ -58,7 +58,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/work-home-ui-cli',
+    assetsPublicPath: '/calendar-cli',
 
     /**
      * Source Maps
