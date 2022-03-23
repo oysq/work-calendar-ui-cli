@@ -71,6 +71,26 @@
       cancel-text="取消"
       :actions="toolBox.actions"
       @select="toolBoxSelect" />
+
+    <!-- 报表 -->
+    <van-calendar
+      title="请选择查询范围"
+      v-model="report.show"
+      type="range"
+      :allow-same-day="true"
+      :min-date="report.minDate"
+      color="linear-gradient(135deg, rgba(5, 201, 221, 1) 0%, rgba(23, 196, 160, 1) 100%)"
+      @confirm="reportConfirm" />
+    <van-dialog v-model="report.showRes">
+      <van-field label="天数" v-model="report.data.dayNum" input-align="right" readonly style="margin-top: 10px;"/>
+      <van-field label="时长" v-model="report.data.overtime" input-align="right" readonly/>
+      <van-field label="工作日时长" v-model="report.data.overtimeWorkDay" input-align="right" readonly/>
+      <van-field label="非工作日时长" v-model="report.data.overtimeNonWorkDay" input-align="right" readonly/>
+      <van-field label="加班工资" v-model="report.data.overtimePay" input-align="right" readonly/>
+      <van-field label="工作日工资" v-model="report.data.overtimePayWorkDay" input-align="right" readonly/>
+      <van-field label="非工作日工资" v-model="report.data.overtimePayNonWorkDay" input-align="right" readonly/>
+    </van-dialog>
+
   </div>
 </template>
 
@@ -146,6 +166,21 @@ export default {
       salaryConf: {
         show: false,
         postSalary: 0
+      },
+      // 报表
+      report: {
+        show: false,
+        showRes: false,
+        minDate: new Date('2021/06/01'),
+        data: {
+          dayNum: 0,
+          overtime: 0,
+          overtimeWorkDay: 0,
+          overtimeNonWorkDay: 0,
+          overtimePay: 0,
+          overtimePayWorkDay: 0,
+          overtimePayNonWorkDay: 0
+        }
       }
     }
   },
@@ -450,7 +485,38 @@ export default {
      * 报表
      */
     clickReport () {
-      this.$toast.fail('报表功能开发中哦~~~')
+      // this.$toast.fail('报表功能开发中哦~~~')
+      this.report.show = true
+    },
+    reportConfirm (date) {
+      this.report.show = false
+      const [start, end] = date
+      const startDate = formatDate(start, '/')
+      const endDate = formatDate(end, '/')
+      // 发起请求
+      this.$emit('showLoading')
+      this.$axios.post('/calendar-ms/punchRecord/selectReport',
+        {
+          startDate: startDate,
+          endDate: endDate
+        },
+        {
+          headers: {
+            'C-TOKEN': this.getUserToken()
+          }
+        }
+      ).then(res => {
+        this.$emit('hideLoading')
+        if (res.data.status === 1) {
+          this.report.data = res.data.body
+          this.report.showRes = true
+        } else {
+          this.$toast.fail(res.data.msg)
+        }
+      }).catch(function (error) {
+        console.log(error)
+        alert(error)
+      })
     }
   }
 }
